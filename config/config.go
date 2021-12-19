@@ -18,6 +18,7 @@ import (
 	"github.com/libp2p/go-libp2p-peerstore/pstoremem"
 
 	"github.com/libp2p/go-libp2p/p2p/host/autorelay"
+	"github.com/libp2p/go-libp2p/p2p/host/base"
 	bhost "github.com/libp2p/go-libp2p/p2p/host/basic"
 	routed "github.com/libp2p/go-libp2p/p2p/host/routed"
 	circuitv2 "github.com/libp2p/go-libp2p/p2p/protocol/circuitv2/client"
@@ -25,7 +26,6 @@ import (
 	"github.com/libp2p/go-libp2p/p2p/protocol/holepunch"
 
 	autonat "github.com/libp2p/go-libp2p-autonat"
-	blankhost "github.com/libp2p/go-libp2p-blankhost"
 	discovery "github.com/libp2p/go-libp2p-discovery"
 	swarm "github.com/libp2p/go-libp2p-swarm"
 	tptu "github.com/libp2p/go-libp2p-transport-upgrader"
@@ -312,7 +312,11 @@ func (cfg *Config) NewNode() (host.Host, error) {
 			h.Close()
 			return nil, err
 		}
-		dialerHost := blankhost.NewBlankHost(dialer)
+		dialerHost, err := base.NewHost(dialer)
+		if err != nil {
+			h.Close()
+			return nil, err
+		}
 		if err := autoNatCfg.addTransports(dialerHost); err != nil {
 			dialerHost.Close()
 			h.Close()
