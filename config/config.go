@@ -17,6 +17,7 @@ import (
 	"github.com/libp2p/go-libp2p-core/transport"
 	"github.com/libp2p/go-libp2p-peerstore/pstoremem"
 
+	discovery "github.com/libp2p/go-libp2p/p2p/discovery/generic"
 	"github.com/libp2p/go-libp2p/p2p/host/autonat"
 	"github.com/libp2p/go-libp2p/p2p/host/autorelay"
 	bhost "github.com/libp2p/go-libp2p/p2p/host/basic"
@@ -26,7 +27,6 @@ import (
 	"github.com/libp2p/go-libp2p/p2p/protocol/holepunch"
 
 	blankhost "github.com/libp2p/go-libp2p-blankhost"
-	discovery "github.com/libp2p/go-libp2p-discovery"
 	swarm "github.com/libp2p/go-libp2p-swarm"
 	tptu "github.com/libp2p/go-libp2p-transport-upgrader"
 

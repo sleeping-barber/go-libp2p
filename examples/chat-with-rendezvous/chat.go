@@ -9,15 +9,15 @@ import (
 	"sync"
 
 	"github.com/libp2p/go-libp2p"
+	discovery "github.com/libp2p/go-libp2p/p2p/discovery/generic"
+
 	"github.com/libp2p/go-libp2p-core/network"
 	"github.com/libp2p/go-libp2p-core/peer"
 	"github.com/libp2p/go-libp2p-core/protocol"
-	discovery "github.com/libp2p/go-libp2p-discovery"
-
-	dht "github.com/libp2p/go-libp2p-kad-dht"
-	"github.com/multiformats/go-multiaddr"
 
 	"github.com/ipfs/go-log/v2"
+	dht "github.com/libp2p/go-libp2p-kad-dht"
+	"github.com/multiformats/go-multiaddr"
 )
 
 var logger = log.Logger("rendezvous")
